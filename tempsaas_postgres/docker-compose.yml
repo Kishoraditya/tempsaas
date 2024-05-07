@@ -1,0 +1,31 @@
+#version: '3.8'
+
+services:
+  postgres:
+    container_name: tempsaas_postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=influencer_post
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=q
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./pg_config:/etc/postgresql
+    networks:
+      - tempsaas_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  tempsaas_network:
+    driver: bridge
+    external: true
+
+volumes:
+  db-data:
+  

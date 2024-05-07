@@ -1,0 +1,17 @@
+#version: '3.8'
+
+services:
+  react:
+    container_name: tempsaas_react
+    build: 
+     context: ../frontend/
+     dockerfile: ./Dockerfile
+    image: react_app
+    ports:
+      - "3000:3000"
+
+networks:
+  tempsaas_network:
+  volumes:
+    driver: bridge
+    external: true

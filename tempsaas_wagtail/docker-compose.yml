@@ -1,0 +1,26 @@
+#version: '3.8'
+
+services:
+  wagtail:
+    container_name: tempsaas_wagtail
+    build: 
+      context: ../
+      dockerfile: ./Dockerfile
+    image: wagtail_with_postgres_and_react
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://postgres:q@tempsaas_postgres:5432/influencer_post
+    volumes:
+      - ../:/app
+    #command: ["./wait-for-it.sh", "tempsaas_postgres:5432", "--", "sh", "-c", "set -xe && ../manage.py migrate --noinput && gunicorn tempsaas.wsgi:application"]
+    command: ["sh", "-c", "set -xe && python /app/manage.py migrate --noinput && gunicorn tempsaas.wsgi:application"]
+    working_dir: /app  
+    user: wagtail  
+    networks:
+      - tempsaas_network
+
+networks:
+  tempsaas_network:
+    driver: bridge
+    external: true
