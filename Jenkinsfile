@@ -4,13 +4,19 @@ pipeline {
     environment {
         // Define any necessary environment variables here
         // For example, if you need special Docker options, DB settings, etc.
+        BUILD_POSTGRESQL = "true"
+        BUILD_WAGTAIL = "false"
+        BUILD_REACT = "false"
+        RUN_TESTS = "false"
+        BUILD_MAIN_APP = "false"
+        DEPLOY = "false"
     }
 
-    //credentialsBinding {
+    credentialsBinding {
         // If your Git repository is private, bind credentials here
         // For example, for GitHub:
         // githubToken('GITHUB_TOKEN_CREDENTIAL_ID')
-    //}
+    }
 
     stages {
         stage('Checkout') {
