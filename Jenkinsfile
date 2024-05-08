@@ -25,8 +25,8 @@ pipeline {
                           branches: [[name: '*/main']], 
                           userRemoteConfigs: [[url: 'https://github.com/Kishoraditya/tempsaas']],
                           gitTool: 'Git',
-                          //toolName: 'C:\\Program Files\\Git\\bin\\git.exe'
-                          toolName: 'C:\Program Files\Git\bin\git.exe'
+                          toolName: 'C:\\Program Files\\Git\\bin\\git.exe'
+                          //toolName: 'C:\Program Files\Git\bin\git.exe'
                           //credentialsId: 'YOUR_GITHUB_CREDENTIALS_ID'
                           ]) // Replace with actual ID
             }
