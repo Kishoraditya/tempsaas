@@ -38,6 +38,7 @@ pipeline {
             }
             steps {
                 dir('tempsaas/tempsaas_postgres') {
+                    bat 'cd'
                     bat 'docker-compose -p postgres up -d'
                 }
             }
