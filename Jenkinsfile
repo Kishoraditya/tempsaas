@@ -18,7 +18,8 @@ pipeline {
                 checkout([$class: 'GitSCM', 
                           branches: [[name: '*/main']], 
                           userRemoteConfigs: [[url: 'https://github.com/Kishoraditya/tempsaas']],
-                          //credentialsId: 'YOUR_GITHUB_CREDENTIALS_ID']) // Replace with actual ID
+                          //credentialsId: 'YOUR_GITHUB_CREDENTIALS_ID'
+                          ]) // Replace with actual ID
             }
         }
 
