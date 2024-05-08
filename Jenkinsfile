@@ -38,7 +38,7 @@ pipeline {
             }
             steps {
                 dir('tempsaas/tempsaas_postgres') {
-                    sh 'docker-compose -p postgres up -d'
+                    bat 'docker-compose -p postgres up -d'
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
             }
             steps {
                 dir('tempsaas/tempsaas_wagtail') {
-                    sh 'docker-compose -p wagtail up -d'
+                    bat 'docker-compose -p wagtail up -d'
                 }
             }
         }
@@ -60,7 +60,7 @@ pipeline {
             }
             steps {
                 dir('tempsaas/tempsaas_react') {
-                    sh 'docker-compose -p react up -d'
+                    bat 'docker-compose -p react up -d'
                 }
             }
         }
@@ -73,10 +73,10 @@ pipeline {
                 script {
                     // Sequential or parallel test execution based on your needs
                     dir('tempsaas/tempsaas_wagtail') {
-                        sh 'docker-compose -p wagtail run wagtail python manage.py test'
+                        bat 'docker-compose -p wagtail run wagtail python manage.py test'
                     }
                     dir('tempsaas/tempsaas_react') {
-                        sh 'docker-compose -p react run react npm test'
+                        bat 'docker-compose -p react run react npm test'
                     }
                 }
             }
@@ -88,7 +88,7 @@ pipeline {
             }
             steps {
                 dir('tempsaas') {
-                    sh 'docker build -t my-app .'
+                    bat 'docker build -t my-app .'
                 }
             }
         }
@@ -99,7 +99,7 @@ pipeline {
             }
             steps {
                 // Assuming deployment involves pushing to a registry or similar
-                sh 'echo "Deployment steps would go here"'
+                bat 'echo "Deployment steps would go here"'
                 // Actual deployment commands
             }
         }
