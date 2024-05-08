@@ -12,11 +12,11 @@ pipeline {
         DEPLOY = "false"
     }
 
-    credentialsBinding {
+    //credentialsBinding {
         // If your Git repository is private, bind credentials here
         // For example, for GitHub:
         // githubToken('GITHUB_TOKEN_CREDENTIAL_ID')
-    }
+    //}
 
     stages {
         stage('Checkout') {
