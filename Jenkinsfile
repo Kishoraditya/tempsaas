@@ -37,7 +37,7 @@ pipeline {
                 expression { return env.BUILD_POSTGRESQL == 'true' } // Add a way to control this stage if needed
             }
             steps {
-                dir('tempsaas/tempsaas_postgres') {
+                dir('tempsaas_postgres') {
                     bat 'cd'
                     bat 'docker-compose up -d'
                 }
