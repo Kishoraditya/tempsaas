@@ -49,8 +49,8 @@ pipeline {
                 expression { return env.BUILD_WAGTAIL == 'true' } // Conditional execution
             }
             steps {
-                dir('tempsaas/tempsaas_wagtail') {
-                    bat 'docker-compose -p wagtail up -d'
+                dir('tempsaas_wagtail') {
+                    bat 'docker-compose up -d'
                 }
             }
         }
@@ -60,8 +60,8 @@ pipeline {
                 expression { return env.BUILD_REACT == 'true' } // Conditional execution
             }
             steps {
-                dir('tempsaas/tempsaas_react') {
-                    bat 'docker-compose -p react up -d'
+                dir('tempsaas_react') {
+                    bat 'docker-compose up -d'
                 }
             }
         }
@@ -73,10 +73,10 @@ pipeline {
             steps {
                 script {
                     // Sequential or parallel test execution based on your needs
-                    dir('tempsaas/tempsaas_wagtail') {
+                    dir('tempsaas_wagtail') {
                         bat 'docker-compose -p wagtail run wagtail python manage.py test'
                     }
-                    dir('tempsaas/tempsaas_react') {
+                    dir('tempsaas_react') {
                         bat 'docker-compose -p react run react npm test'
                     }
                 }
