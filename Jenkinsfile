@@ -5,11 +5,11 @@ pipeline {
         // Define any necessary environment variables here
         // For example, if you need special Docker options, DB settings, etc.
         BUILD_POSTGRESQL = "true"
-        BUILD_WAGTAIL = "false"
-        BUILD_REACT = "false"
+        BUILD_WAGTAIL = "true"
+        BUILD_REACT = "true"
         RUN_TESTS = "false"
-        BUILD_MAIN_APP = "false"
-        DEPLOY = "false"
+        BUILD_MAIN_APP = "true"
+        DEPLOY = "true"
     }
 
     //credentialsBinding {
